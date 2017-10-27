@@ -43,6 +43,9 @@ class Game:
         elif move_p0 < move_p1:
             self.players[1].won_round()
             self.players[0].lost_round()
+        else:
+            self.players[0].tie_round()
+            self.players[1].tie_round()
 
         self.curr_round += 1
 

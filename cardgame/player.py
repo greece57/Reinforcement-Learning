@@ -31,14 +31,20 @@ class Player():
         self.last_enemy_move = move
 
     def won_round(self):
-        """ Called by the Game to inform about round Outcome """
+        """ Called by the Game to inform about round Outcome
+            You played a higher card then the other player. """
         self.points += 1
         self._won_round()
 
     def lost_round(self):
-        """ Called by the Game to inform about negative round Outcome """
-        self.lost_games += 1
+        """ Called by the Game to inform about negative round Outcome
+            You played a lower card then the other player."""
         self._lost_round()
+
+    def tie_round(self):
+        """ Called by the Game to inform about equal round Outcome.
+            Both players played the same card """
+        self._tie_round()
 
     def perform_move(self):
         """ Called by the Game to ask for the next Move of the Player """
@@ -75,6 +81,9 @@ class Player():
         pass
 
     def _lost_round(self):
+        pass
+
+    def _tie_round(self):
         pass
 
     def _game_over(self):
