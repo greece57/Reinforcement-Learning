@@ -1,14 +1,15 @@
 """ Let the Game begin """
 from cardgame.random_ai import RandomAIPlayer
+from cardgame.reinforcement_learning_agent import RLAgent
 from cardgame.real_player import RealPlayer
 from cardgame.game import Game
 
 #p1 = RealPlayer("Niko")
 
 p2 = RandomAIPlayer ("John")
-p3 = RandomAIPlayer ("Peter")
+p3 = RLAgent ("Stefan", hidden_layers=20, learning_rate=1e-2, update_frequency=50)
 
-total_games = 1000000
+total_games = 1000
 
 g = Game()
 g.init_game(p2, p3)
