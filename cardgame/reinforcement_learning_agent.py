@@ -102,7 +102,7 @@ class RLAgent(Player):
 
     def _game_over(self):
         # Give Reward
-        self._update_game(reward_extra=self.last_game*10)
+        self._update_game(reward_extra=self.last_game*50)
         #Update the network
         with tf.Session(graph=self._graph) as sess:
             sess.run(tf.global_variables_initializer())
@@ -135,7 +135,7 @@ class RLAgent(Player):
         if self.last_enemy_move in self.enemy_cards:
             self.enemy_cards.remove(self.last_enemy_move)
         # int(False) == 0, int(True) == 1
-        reward = int(won) + int(lost) * -1 + int(tie) * 0 + int(wrong_card) * -100 + reward_extra
+        reward = int(won) + int(lost) * -1 + int(tie) * 0 + int(wrong_card) * -5 + reward_extra
         last_state = self.current_state
         self.current_state = self._create_state()
         self.ep_history.append([last_state, self.last_action, reward, self.current_state])
