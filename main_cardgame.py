@@ -21,6 +21,7 @@ for i in range(total_games):
     if i % (total_games / progress_splits) == 0:
         print("x", end='', flush=True)
 
+g.finalize_game()
 print("")
 print(p2.name + " won: " + str(p2.won_games) + " Games")
 print(p3.name + " won: " + str(p3.won_games) + " Games")

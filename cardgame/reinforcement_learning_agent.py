@@ -62,6 +62,8 @@ class RLAgent(Player):
             optimizer = tf.train.AdamOptimizer(learning_rate=self._learning_rate)
             self.update_batch = optimizer.apply_gradients(zip(self.gradient_holders, tvars))
 
+            self.saver = tf.train.Saver()
+
         tf.reset_default_graph()
 
         with tf.Session(graph=self._graph) as sess:
@@ -139,6 +141,11 @@ class RLAgent(Player):
     def _create_state(self):
         return np.append([1 if card in self.cards else 0 for card in range(1, 11)],
                          [1 if card in self.enemy_cards else 0 for card in range(1, 11)])
+
+    def finalize(self):
+        with tf.Session(graph=self._graph) as sess:
+            sess.run(tf.global_variables_initializer())
+            self.saver.save(sess, "rl_agent_model")
 
 def discount_rewards(rewards):
     """ take 1D float array of rewards and comopute discounted reward """

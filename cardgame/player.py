@@ -88,3 +88,6 @@ class Player():
 
     def _game_over(self):
         pass
+
+    def finalize(self):
+        pass

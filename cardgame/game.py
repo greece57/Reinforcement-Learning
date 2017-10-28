@@ -73,3 +73,7 @@ class Game:
             self.players[0].tie_game()
             self.players[1].tie_game()
             self.stats.extend([-1])
+
+    def finalize_game(self):
+        self.players[0].finalize()
+        self.players[1].finalize()
