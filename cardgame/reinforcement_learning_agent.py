@@ -85,7 +85,9 @@ class RLAgent(Player):
 
         if self.last_card not in self.cards:
             self._update_game(wrong_card=True)
-            return self._choose_move()
+            self.last_card = np.random.choice(self.cards) #pylint: disable=E1101
+            self.last_action = self.last_card - 1
+            return self.last_card
 
         return self.last_card
 
