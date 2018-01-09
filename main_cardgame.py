@@ -2,7 +2,7 @@
 # Arguments when starting from console: main_cardgame.py [total_games] [Number of X for progress]
 import sys
 from cardgame.random_ai import RandomAIPlayer
-from cardgame.reinforcement_learning_agent import RLAgent
+from cardgame.plain_agent import RLAgent
 from cardgame.real_player import RealPlayer
 from cardgame.game import Game
 
